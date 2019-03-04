@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-mate",
-  "version": "2.2.0",
-  "description": "Gatsby v2 starter to create a top notch portfolio!",
+  "name": "KJPortfolio",
+  "version": "2.2.1",
+  "description": "Graphic design portfolio",
   "main": "index.js",
   "scripts": {
     "build": "cleandir ./.cache && gatsby build",
@@ -12,21 +12,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EmaSuriano/gatsby-starter-mate.git"
+    "url": "git+https://github.com/AJC-147/KJPortfolio.git"
   },
   "keywords": [
-    "gatsby",
-    "starter",
-    "contentful",
-    "PWA",
-    "portfolio"
+    "krishna",
+    "portfolio",
+    "graphic",
+    "designer",
+    "artist",
+    "virginia"
   ],
-  "author": "Ema Suriano",
+  "author": "Alexander Chacko <alexander.chacko@outlook.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/EmaSuriano/gatsby-starter-mate/issues"
+    "url": "https://github.com/AJC-147/KJPortfolio/issues"
   },
-  "homepage": "https://github.com/EmaSuriano/gatsby-starter-mate#readme",
+  "homepage": "https://github.com/AJC-147/KJPortfolio#readme",
   "dependencies": {
     "clean-dir": "^1.0.3",
     "contentful": "^7.0.3",

@@ -21,7 +21,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-google-fonts',
     options: {
-      fonts: ['cabin', 'Open Sans'],
+      fonts: ['cabin', 'Open Sans', 'Montserrat'],
     },
   },
   {
