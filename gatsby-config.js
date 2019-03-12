@@ -9,52 +9,34 @@ const client = contentful.createClient({
   accessToken: ACCESS_TOKEN,
 });
 
-const getAboutEntry = entry => entry.sys.contentType.sys.id === 'about';
-
-const plugins = [
-  'gatsby-plugin-react-helmet',
-  {
-    resolve: 'gatsby-plugin-manifest',
-    options: manifestConfig,
-  },
-  'gatsby-plugin-styled-components',
-  {
-    resolve: 'gatsby-plugin-google-fonts',
-    options: {
-      fonts: ['cabin', 'Open Sans', 'Montserrat'],
+module.exports = {
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: manifestConfig,
     },
-  },
-  {
-    resolve: 'gatsby-source-contentful',
-    options: {
-      spaceId: SPACE_ID,
-      accessToken: ACCESS_TOKEN,
+    'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['cabin', 'Open Sans', 'Montserrat'],
+      },
     },
-  },
-  'gatsby-transformer-remark',
-  'gatsby-plugin-offline',
-];
-
-module.exports = client.getEntries().then(entries => {
-  const { mediumUser = '@medium' } = entries.items.find(getAboutEntry).fields;
-
-  plugins.push({
-    resolve: 'gatsby-source-medium',
-    options: {
-      username: mediumUser,
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: SPACE_ID,
+        accessToken: ACCESS_TOKEN,
+      },
     },
-  });
-
-  if (ANALYTICS_ID) {
-    plugins.push({
+    'gatsby-transformer-remark',
+    'gatsby-plugin-offline',
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: ANALYTICS_ID,
       },
-    });
-  }
-
-  return {
-    plugins,
-  };
-});
+    }
+  ],
+}
