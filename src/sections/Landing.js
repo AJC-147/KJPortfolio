@@ -6,36 +6,9 @@ import { SectionLink } from 'react-scroll-section';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
 import MouseIcon from '../components/MouseIcon';
-import Triangle from '../components/Triangle';
 
 const Background = () => (
   <div>
-    <Triangle
-      color="backgroundDark"
-      height={['35vh', '80vh']}
-      width={['95vw', '60vw']}
-    />
-
-    <Triangle
-      color="secondary"
-      height={['38vh', '80vh']}
-      width={['50vw', '35vw']}
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['25vh', '35vh']}
-      width={['75vw', '60vw']}
-      invertX
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['20vh', '20vh']}
-      width={['100vw', '100vw']}
-      invertX
-      invertY
-    />
   </div>
 );
 
@@ -43,7 +16,7 @@ const LandingPage = () => (
   <Section.Container id="home" Background={Background}>
     <StaticQuery
       query={graphql`
-        query SiteTitleQuery {
+        query LandingPageQuery {
           contentfulAbout {
             name
             roles
@@ -54,10 +27,24 @@ const LandingPage = () => (
               fontAwesomeIcon
             }
           }
+
+          contentfulInfo {
+            shortBio
+            skills
+          }
+          contentfulMeta {
+            landingImage {
+              file {
+                url
+              }
+            }
+          }
         }
       `}
       render={data => {
         const { name, socialLinks, roles } = data.contentfulAbout;
+        const { shortBio, skills } = data.contentfulInfo;
+        const { landingImage } = data.contentfulMeta;
 
         return (
           <Fragment>
@@ -79,7 +66,7 @@ const LandingPage = () => (
               textAlign="center"
             >
               <TextLoop>
-                {roles.map(text => (
+                {skills.map(text => (
                   <Text width={[300, 500]} key={text}>
                     {text}
                   </Text>
@@ -94,7 +81,7 @@ const LandingPage = () => (
                 </Box>
               ))}
             </Flex>
-            <SectionLink section="about">
+            <SectionLink section="aboutt">
               {({ onClick }) => <MouseIcon onClick={onClick} />}
             </SectionLink>
           </Fragment>

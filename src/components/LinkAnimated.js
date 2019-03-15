@@ -6,9 +6,7 @@ const LinkAnimated = styled.span`
   margin-bottom: 0;
   padding-bottom: 5px;
   color: inherit;
-  ${props =>
-    props.selected &&
-    `border-bottom:  5px solid ${props.theme.colors.primaryLight}`};
+  border-bottom:  5px solid red;
   transition: 0.4s;
   cursor: ${props => (props.onClick ? 'pointer' : 'default')};
 

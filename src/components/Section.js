@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Section } from 'react-scroll-section';
-import { Heading } from 'rebass';
 import PropTypes from 'prop-types';
-import Slide from 'react-reveal/Slide';
-import LinkAnimated from './LinkAnimated';
 
 const SectionContainer = styled.div`
   min-height: 100vh;
@@ -18,6 +15,16 @@ const SectionContainer = styled.div`
   padding: 5em 1em;
   scroll-behavior: smooth;
 `;
+
+const Heading = styled.h2`
+  box-sizing: border-box;
+  margin: 0px;
+  margin-bottom: 32px;
+  font-size: 24px;
+  font-weight: bold;
+  color: ${props => props.theme.colors.primary};
+`;
+
 
 const DefaultBackground = () => <div />;
 
@@ -34,8 +41,32 @@ Container.propTypes = {
   Background: PropTypes.func,
 };
 
-const Header = ({ name, icon = '', label = '' }) => (
-  <Slide left>
+const Header = ({ name }) => (
+    <Heading>
+        {name}
+    </Heading>
+);
+
+Header.propTypes = {
+  name: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  label: PropTypes.string,
+};
+
+//----------------------------------------------------------------------//
+
+const LandingComp = ({ id, children, Background = DefaultBackground }) => (
+  <Section id={id} style={{ position: 'relative' }}>
+    <Background />
+    <SectionContainer>{children}</SectionContainer>
+  </Section>
+);
+
+LandingComp.propTypes = {
+
+};
+
+const ScrollingComp = ({ name, icon = '', label = '' }) => (
     <Heading color="secondaryDark" mb={4}>
       <LinkAnimated selected>
         {name}
@@ -46,16 +77,15 @@ const Header = ({ name, icon = '', label = '' }) => (
         )}
       </LinkAnimated>
     </Heading>
-  </Slide>
 );
 
-Header.propTypes = {
-  name: PropTypes.string.isRequired,
-  icon: PropTypes.string,
-  label: PropTypes.string,
+ScrollingComp.propTypes = {
+
 };
 
 export default {
   Container,
   Header,
+  LandingComp,
+  ScrollingComp,
 };

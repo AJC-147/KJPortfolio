@@ -8,10 +8,10 @@ const Helmet = ({ theme = {} }) => (
   <StaticQuery
     query={graphql`
       query HelmetQuery {
-        contentfulAbout {
-          name
+        contentfulMeta {
+          siteTitle
           description
-          profile {
+          icon {
             favicon16: resize(width: 16) {
               src
             }
@@ -29,25 +29,25 @@ const Helmet = ({ theme = {} }) => (
       }
     `}
     render={data => {
-      const { name, description, profile } = data.contentfulAbout;
-      const title = `${name} Portofolio`;
+      const { siteTitle, description, icon } = data.contentfulMeta;
+      const title = `${siteTitle}`;
 
       return (
         <ReactHelmet>
           <meta charSet="utf-8" />
           <title>{title}</title>
           <meta name="description" content={description} />
-          <link rel="shortcut icon" href={profile.favicon32.src} />
+          <link rel="shortcut icon" href={icon.favicon32.src} />
           <meta name="theme-color" content={theme.background} />
-          <meta name="image" content={profile.favicon32.src} />
+          <meta name="image" content={icon.favicon32.src} />
 
           <meta itemProp="name" content={title} />
           <meta itemProp="description" content={description} />
-          <meta itemProp="image" content={profile.favicon32.src} />
+          <meta itemProp="image" content={icon.favicon32.src} />
 
           <meta name="og:title" content={title} />
           <meta name="og:description" content={description} />
-          <meta name="og:image" content={profile.bigIcon.src} />
+          <meta name="og:image" content={icon.bigIcon.src} />
           <meta name="og:site_name" content={title} />
           <meta name="og:locale" content="en_US" />
           <meta name="og:type" content="website" />
@@ -55,24 +55,24 @@ const Helmet = ({ theme = {} }) => (
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
-          <meta name="twitter:image" content={profile.bigIcon.src} />
+          <meta name="twitter:image" content={icon.bigIcon.src} />
 
           <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href={profile.appleIcon.src}
+            href={icon.appleIcon.src}
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href={profile.favicon32.src}
+            href={icon.favicon32.src}
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href={profile.favicon16.src}
+            href={icon.favicon16.src}
           />
 
           <link
