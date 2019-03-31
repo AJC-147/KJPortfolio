@@ -14,6 +14,10 @@ const SectionContainer = styled.div`
   justify-content: center;
   padding: 5em 1em;
   scroll-behavior: smooth;
+
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: start;
 `;
 
 const Heading = styled.h2`
@@ -27,6 +31,10 @@ const Heading = styled.h2`
 
 
 const DefaultBackground = () => <div />;
+
+//----------------------------------------------------------------------//
+//------------------------Dont Edit Text Below--------------------------//
+//----------------------------------------------------------------------//
 
 const Container = ({ id, children, Background = DefaultBackground }) => (
   <Section id={id} style={{ position: 'relative' }}>
@@ -55,15 +63,17 @@ Header.propTypes = {
 
 //----------------------------------------------------------------------//
 
-const LandingComp = ({ id, children, Background = DefaultBackground }) => (
+const LandingComp = ({ id, children }) => (
   <Section id={id} style={{ position: 'relative' }}>
-    <Background />
+
     <SectionContainer>{children}</SectionContainer>
   </Section>
 );
 
 LandingComp.propTypes = {
-
+  id: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  Background: PropTypes.func,
 };
 
 const ScrollingComp = ({ name, icon = '', label = '' }) => (
@@ -80,7 +90,9 @@ const ScrollingComp = ({ name, icon = '', label = '' }) => (
 );
 
 ScrollingComp.propTypes = {
-
+  name: PropTypes.string.isRequired,
+  icon: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default {

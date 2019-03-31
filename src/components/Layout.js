@@ -19,6 +19,7 @@ body {
   margin: 0;
   font-family: Cabin;
   overflow-x: hidden;
+  scroll-snap-type: y mandatory;
 }
 `;
 

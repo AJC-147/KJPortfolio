@@ -1,19 +1,28 @@
 import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { Heading, Flex, Box, Text } from 'rebass';
+import { Heading, Image, Flex, Box, Text } from 'rebass';
+import styled from 'styled-components';
+
 import TextLoop from 'react-text-loop';
 import { SectionLink } from 'react-scroll-section';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
 import MouseIcon from '../components/MouseIcon';
 
-const Background = () => (
-  <div>
-  </div>
-);
+const Background = styled(Image)`
+  position: absolute;
+  height: 100vh;
+  margin: 0 auto;
+  width: 100%;
+  border: red 1px solid;
+  object-fit: cover;
+  background-color: purple;
+  left: 0;
+  z-index: -1;
+`;
 
 const LandingPage = () => (
-  <Section.Container id="home" Background={Background}>
+  <Section.LandingComp id="home">
     <StaticQuery
       query={graphql`
         query LandingPageQuery {
@@ -48,6 +57,7 @@ const LandingPage = () => (
 
         return (
           <Fragment>
+            <Background src={landingImage.file.url} alt="background image" />
             <Heading
               textAlign="center"
               as="h1"
@@ -88,7 +98,7 @@ const LandingPage = () => (
         );
       }}
     />
-  </Section.Container>
+  </Section.LandingComp>
 );
 
 export default LandingPage;
